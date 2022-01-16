@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useRef, useState } from "react";
 import { Button, Col, Form, Modal, Row } from "react-bootstrap";
 import { useMoralis } from "react-moralis";
-import { checkWinner, createBet, getGameById, getMyBets } from "./web3/smartContractWrapper";
+import { checkWinner, createBet, getGameById, getGameGrid, getMyBets } from "./web3/smartContractWrapper";
 import Countdown from "react-countdown";
 import { v4 as uuidv4 } from "uuid";
+import axios from 'axios';
 
 function ParticipateModal(props) {
   const { user } = useMoralis();
@@ -76,6 +77,13 @@ function ParticipateModal(props) {
         })
   };
 
+  const claimNFT = () => {
+      getGameGrid(game.id, user.get('ethAddress'))
+        .then(grid => {
+            alert("The grid is: " + JSON.stringify(grid));
+        });
+  }
+
   return (
     <Modal show={props.showParticipateModal} onHide={props.hideModal}>
       <Modal.Header closeButton>
@@ -119,7 +127,7 @@ function ParticipateModal(props) {
                             <div className="mb-2">
                                 You have won!! 
                             </div>
-                            <Button >Claim NFT</Button>
+                            <Button onClick={claimNFT}>Claim NFT</Button>
                         </div>) : (<div>Better Luck next time...</div>)
                       )
                   }
@@ -197,3 +205,5 @@ function ParticipateModal(props) {
 }
 
 export default ParticipateModal;
+
+// 0090dbcd-a0d4-4390-986d-8f7e361db8fe

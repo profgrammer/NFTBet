@@ -62,6 +62,11 @@ const abi = [
 						"internalType": "string[][]",
 						"name": "guess",
 						"type": "string[][]"
+					},
+					{
+						"internalType": "int256",
+						"name": "score",
+						"type": "int256"
 					}
 				],
 				"internalType": "struct NFTBet.Bet",
@@ -151,6 +156,53 @@ const abi = [
 		"inputs": [
 			{
 				"internalType": "string",
+				"name": "",
+				"type": "string"
+			}
+		],
+		"name": "gameWinners",
+		"outputs": [
+			{
+				"internalType": "address",
+				"name": "winnerAddress",
+				"type": "address"
+			},
+			{
+				"internalType": "int256",
+				"name": "score",
+				"type": "int256"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "string",
+				"name": "gameId",
+				"type": "string"
+			}
+		],
+		"name": "getGameAnswer",
+		"outputs": [
+			{
+				"internalType": "string[][]",
+				"name": "",
+				"type": "string[][]"
+			}
+		],
+		"payable": false,
+		"stateMutability": "view",
+		"type": "function"
+	},
+	{
+		"constant": true,
+		"inputs": [
+			{
+				"internalType": "string",
 				"name": "id",
 				"type": "string"
 			}
@@ -231,6 +283,11 @@ const abi = [
 						"internalType": "string[][]",
 						"name": "guess",
 						"type": "string[][]"
+					},
+					{
+						"internalType": "int256",
+						"name": "score",
+						"type": "int256"
 					}
 				],
 				"internalType": "struct NFTBet.Bet",
@@ -243,5 +300,4 @@ const abi = [
 		"type": "function"
 	}
 ]
-
 export default abi;

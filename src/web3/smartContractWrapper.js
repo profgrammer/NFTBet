@@ -33,10 +33,17 @@ const checkWinner = async (gameId, address) => {
 	return contract.methods.checkWinner(gameId).call({from: address});
 }
 
+const getGameGrid = async (gameId, address) => {
+	let web3 = await Moralis.enableWeb3();
+	const contract = new web3.eth.Contract(abi, contractAddress);
+	return contract.methods.getGameAnswer(gameId).call({from: address});
+}
+
 export {
 	createGame,
 	getGameById,
 	getMyBets,
 	createBet,
-	checkWinner
+	checkWinner,
+	getGameGrid
 };
